@@ -1,0 +1,18 @@
+.addContact {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // position: absolute;
+
+  &__title {
+    font-size: 24px;
+  }
+
+  &__btn {
+    background: transparent;
+    border-radius: 50%;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

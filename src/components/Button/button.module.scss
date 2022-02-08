@@ -1,0 +1,9 @@
+.custom_button {
+  font-size: 16px;
+  border: none;
+  background: transparent;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

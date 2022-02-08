@@ -1,0 +1,11 @@
+.input {
+  width: 100%;
+  &__control {
+    border: none;
+    width: 100%;
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+}
