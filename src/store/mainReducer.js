@@ -1,10 +1,10 @@
 import { contactReducer } from "./contacts/reducers";
-import { searchReducer } from "./search/reducers";
 import { combineReducers } from "redux";
+import { searchReducer } from "./search/reducers";
 
 const mainReducer = combineReducers({
   contacts: contactReducer,
-  search: searchReducer
+  search: searchReducer,
 });
 
 export default mainReducer;

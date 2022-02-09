@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import store from "./store";
 
 import { NewContact, Content, EditProfile } from "./containers";
+import ContactPage from "./containers/ContactPage";
 
 const App = () => {
   return (
@@ -13,7 +14,8 @@ const App = () => {
           <Routes>
             <Route exact path="/" element={<Content />} />
             <Route path="/add" element={<NewContact />} />
-            <Route path="/edit/:x" element={<EditProfile />} />
+            <Route path="/contact/:id" element={<ContactPage />} />
+            <Route path="/edit" element={<EditProfile />} />
           </Routes>
         </Provider>
       </div>

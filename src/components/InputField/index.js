@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./input.module.scss";
-
 const InputField = ({ type, value, placeholder, onChange, className }) => {
   return (
     <input
+      className={className}
       value={value}
       type={type}
       placeholder={placeholder}
       onChange={onChange}
-      className = {className}
       autoFocus
     />
   );

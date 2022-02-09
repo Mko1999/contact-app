@@ -2,20 +2,47 @@ import React, { useState, useEffect, useRef } from "react";
 import { PlusCircleFill } from "react-bootstrap-icons";
 import { InputField } from "../../components";
 import styles from "./form.module.scss";
+import { useDispatch,useSelector } from "react-redux";
+import { addContact } from "../../store/contacts/actions";
+import { useNavigate} from "react-router-dom"
 
-const Form = () => {
+
+const Form = ({submit,setSubmit}) => {
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [company, setCompany] = useState("");
+  const dispatch = useDispatch()
+
+  const navigate = useNavigate()
+
+  if(submit){
+    dispatch(addContact({
+      firstName,
+      lastName,
+      company,
+      
+    }));
+    navigate({ pathname: '/' })
+  }
+
+  const addPhoto = (event) => {
+    const photo = URL.createObjectURL(event.target.files[0]);
+  };
 
   return (
-    <form autoComplete="off" className={styles.form}>
+    <form
+      autoComplete="off"
+      className={styles.form}
+      onSubmit={(e) => e.preventDefault()}
+    >
       <div className={styles.form__photo__section}>
         <div className={styles.form__photo__section__background}></div>
         <input
           type="file"
           className={styles.form__fileInput}
           accept="image/*,.pdf"
+          onChange={addPhoto}
         />
       </div>
       <div className={styles.form__photo__section__addPhoto}>

@@ -1,21 +1,21 @@
-import React from 'react';
-import { ContactListItem } from '..';
-import styles from "./contactlistgroup.module.scss"
-const ContactListGroup = ({groupedContacts}) => {
-  return <div className = {styles.contactListGroup} >
-      <div>
-          {
-              groupedContacts.key
-          }
+import React from "react";
+import styles from "./contactlistgroup.module.scss";
+import { ContactListItem } from "..";
+
+const ContactListGroup = ({ groupedContacts, groupKey }) => {
+  return (
+    <div className={styles.contactListGroup}>
+      <div className={styles.contactListGroup__firstChar}>
+        <p>{groupKey}</p>
+        {<p></p>}
       </div>
       <div>
-          {
-              groupedContacts.contacts.map((contact)=>{
-                  return <ContactListItem contact={contact}/>
-              })
-          }
+        {groupedContacts.map((contact, id) => (
+          <ContactListItem key={id} contact={contact} />
+        ))}
       </div>
-  </div>;
+    </div>
+  );
 };
 
 export default ContactListGroup;

@@ -21,16 +21,14 @@ Button.propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   color: PropTypes.string,
   onButtonClick: PropTypes.func,
-
   className: PropTypes.string,
 };
 
 Button.defaultProps = {
   value: "",
   color: "",
-
+  onButtonClick: noop,
   className: "",
-  onButtonClick: noop
 };
 
 export default Button;

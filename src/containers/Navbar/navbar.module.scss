@@ -1,16 +1,16 @@
 .navbar {
   // position: absolute;
-  top: 30px;
-
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-left: 3px;
 
   &__icons {
     margin-right: 30px;
-    &:nth-child(1) {
-      padding-right: 3px;
+
+    &__wifi {
+      padding-right: 4px;
     }
   }
 
