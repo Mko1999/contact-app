@@ -4,7 +4,7 @@ import styles from "./time.module.scss";
 const Time = () => {
   useEffect(() => {
     setInterval(() => setDateState(new Date(), 3000));
-  }, []);
+  });
 
   const [dateState, setDateState] = useState(new Date());
 

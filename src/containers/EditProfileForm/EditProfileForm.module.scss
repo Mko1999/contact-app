@@ -1,4 +1,4 @@
-.form {
+.editProfileForm {
   &__photo__section {
     padding: 20px 0;
 
@@ -27,10 +27,6 @@
       background-position: 50%;
       background-image: url("../../assets/avatar.png");
     }
-  }
-
-  &__fileInput {
-    display: none;
   }
 
   &__inputList {
@@ -72,5 +68,25 @@
         padding-left: 8px;
       }
     }
+  }
+  &__fileInput {
+    display: none;
+  }
+
+  &__deleteContact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    p {
+      color: #ff0800;
+      margin: 16px auto 20px;
+      cursor: pointer;
+    }
+  }
+  &__img{
+    width: 150px;
+    height:150px;
+    border-radius: 50%;
   }
 }

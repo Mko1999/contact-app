@@ -2,12 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  height: 80vh;
 
   &__container {
     position: relative;
+    height: 650px;
   }
   &__iphone {
-    height: 600px;
+    height: 650px;
     width: 100%;
     pointer-events: none;
   }
@@ -20,5 +22,13 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    height: 90%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+      display: none;
+    }
   }
+
+  
 }

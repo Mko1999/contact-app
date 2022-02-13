@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
-import styles from "./newcontactheader.module.scss";
 import Button from "../../components/Button";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addContact } from "../../store/contacts/actions";
+import styles from "./EditProfile.module.scss";
+import { editContact } from "../../store/contacts/actions";
 import { contactSelector } from "../../store/contacts/selectors";
-const NewContactHeader = ({ fields }) => {
-  const [disabled, setDisabled] = useState(true);
+const EditContactHeader = ({ fields }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const contactList = useSelector(contactSelector);
-
-  useEffect(() => {
-    if (fields.firstName || fields.lastName) {
-      setDisabled(false);
-    } else{
-      setDisabled(true);
-    }
-  }, [fields.company, fields.firstName, fields.lastName, disabled]);
 
   const sortContacts = contactList.sort((a, b) => a.id - b.id);
 
   const handleDoneClick = () => {
     dispatch(
-      addContact({
+      editContact({
         ...fields,
         id: sortContacts[sortContacts.length - 1].id + 1,
       })
@@ -33,21 +23,20 @@ const NewContactHeader = ({ fields }) => {
   };
 
   return (
-    <div className={styles.newContactHeader}>
+    <div className={styles.editProfileHeader}>
       <Link to="/">
         <Button
           value="Cancel"
           background="#fff"
           color="#007aff"
-          className={styles.newContactHeader__cancel}
+          className={styles.editProfileHeader__cancel}
         />
       </Link>
-      <h2 className={styles.newContactHeader__heading}>New Contact</h2>
+
       <Button
         value="Done"
         background="#fff"
-        color={disabled? "#8e8e93" : "blue"}
-        disabled={!disabled}
+        color="#007aff"
         className={styles.newContactHeader__done}
         onButtonClick={handleDoneClick}
       />
@@ -55,4 +44,4 @@ const NewContactHeader = ({ fields }) => {
   );
 };
 
-export default NewContactHeader;
+export default EditContactHeader;

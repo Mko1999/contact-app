@@ -1,50 +1,53 @@
 export const ADD_CONTACT = "ADD_CONTACT";
 export const EDIT_CONTACT = "EDIT_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
-export const GET_CONTACT = "GET_CONTACT"
+export const SET_CONTACT = "SET_CONTACT"
 
 const initialState = {
   contacts: [
     {
-      id: Math.floor(Math.random() * 1000000000),
+      id: 0,
       firstName: "Karina",
       lastName: "Armenyan",
       company: "Google",
-      email: "Karine@gmail.com",
+      emails: ["Karine@gmail.com", "Kar@gmail.com"],
       phoneNumbers: ["077 77 70 77"],
+      uploadedPhoto: null,
     },
     {
-      id: Math.floor(Math.random() * 1000000000),
+      id: 1,
       firstName: "Armen",
       lastName: "Armenyan",
       company: "Google",
-      email: "Armenyan@gmail.com",
+      emails: ["Armenyan@gmail.com"],
       phoneNumbers: ["077 07 07 07"],
+      uploadedPhoto: null,
     },
     {
-      id: Math.floor(Math.random() * 1000000000),
+      id: 2,
       firstName: "Zara",
       lastName: "Armenyan",
       company: "Facebook",
-      email: "Zara@gmail.com",
+      emails: ["Zara@gmail.com"],
       phoneNumbers: ["077 00 00 00"],
+      uploadedPhoto: null,
     },
   ],
-  currentContact: {}
+  currentContact: {},
 };
 
-export const contactReducer = (state = initialState, { type, payload, id }) => {
+export const contactReducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [{ id, ...payload }, ...state.contacts],
+        contacts: [payload, ...state.contacts],
       };
     case EDIT_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id !== id ? contact : { ...contact, ...payload }
+          contact.id !== payload.id ? contact : { ...contact, ...payload }
         ),
       };
 
@@ -53,12 +56,13 @@ export const contactReducer = (state = initialState, { type, payload, id }) => {
         ...state,
       };
 
-      case GET_CONTACT:
-        return {
-          ...state,
-          currentContact: state.contacts.find((contact)=> id === contact.id)
-        }
+   
 
+  case SET_CONTACT: 
+  return {
+    ...state,
+    currentContact: state.contacts.find((contact)=> contact.id === payload)
+  }
     default:
       return state;
   }

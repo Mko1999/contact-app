@@ -15,7 +15,7 @@ const InputField = ({ type, value, placeholder, onChange, className }) => {
 };
 
 InputField.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   placeholder: PropTypes.string,
   className: PropTypes.string,
   type: PropTypes.string,

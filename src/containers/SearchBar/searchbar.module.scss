@@ -15,9 +15,11 @@
   &__input {
     border: none;
     outline: none;
+    background: transparent;
     &:focus {
       border: none;
       outline: none;
+      background: transparent;
     }
   }
 }

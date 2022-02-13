@@ -1,10 +1,15 @@
-import { ADD_CONTACT, EDIT_CONTACT, DELETE_CONTACT,GET_CONTACT } from "../reducers";
+import {
+  ADD_CONTACT,
+  EDIT_CONTACT,
+  DELETE_CONTACT,
+  SET_CONTACT,
+} from "../reducers";
 
 export const addContact = (contact) => {
   return {
     type: ADD_CONTACT,
     payload: contact,
-    id: Math.floor(Math.random() * 10000000),
+    // id: ,
   };
 };
 
@@ -21,14 +26,11 @@ export const deleteContact = (id) => {
     type: DELETE_CONTACT,
     id,
   };
-
- 
 };
 
-
-export const getCurrentContact = (id) =>{
-  return{
-    type: GET_CONTACT,
-    id
-  }
-}
+export const setCurrentContact = (payload) => {
+  return {
+    type: SET_CONTACT,
+    payload,
+  };
+};

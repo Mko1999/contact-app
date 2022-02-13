@@ -1,0 +1,83 @@
+.form {
+  &__photo__section {
+    padding: 20px 0;
+
+    &__addPhoto {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        color: #007aff;
+
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+
+    &__background {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #8e8e8e;
+      cursor: pointer;
+      margin: 0 auto;
+      background-size: 110px;
+      background-repeat: no-repeat;
+      background-position: 50%;
+      background-image: url("../../assets/avatar.png");
+    }
+
+    &__img{
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+    }
+  }
+
+  &__fileInput {
+    display: none;
+  }
+
+  &__inputList {
+    list-style-type: none;
+
+    li {
+      background-color: transparent;
+      height: 40px;
+      border-bottom: 1px solid #8e8e93;
+      width: 90%;
+
+      input {
+        border-bottom: 1px solid #8e8e93;
+        border: none;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        &:focus {
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  &__addPhone,
+  &__addEmail {
+    margin: 0 auto;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: #007aff;
+      cursor: pointer;
+      line-height: 1px;
+      margin: 10px 0 2px 36px;
+
+      p {
+        padding-left: 8px;
+      }
+    }
+  }
+  
+}
