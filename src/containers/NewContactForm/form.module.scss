@@ -78,6 +78,33 @@
         padding-left: 8px;
       }
     }
+    li{
+      height: 42px;
+    border: none;
+    border-bottom: 1px solid #8e8e93;
+    margin: 0 auto;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    width: 80%;
+
+    button{
+      background-color: #ff0800;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+
+    input{
+      border: none;
+      outline: none;
+      background: transparent;
+      width: 80%;
+      &:focus{
+        border: none;
+        outline: none;
+      }
+    }
+    }
   }
   
 }

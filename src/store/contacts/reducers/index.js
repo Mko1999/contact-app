@@ -36,7 +36,7 @@ const initialState = {
   currentContact: {},
 };
 
-export const contactReducer = (state = initialState, { type, payload }) => {
+export const contactReducer = (state = initialState, { type, payload, id }) => {
   switch (type) {
     case ADD_CONTACT:
       return {
@@ -47,7 +47,7 @@ export const contactReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         contacts: state.contacts.map((contact) =>
-          contact.id !== payload.id ? contact : { ...contact, ...payload }
+          contact.id !== id ? contact : { ...contact, ...payload }
         ),
       };
 

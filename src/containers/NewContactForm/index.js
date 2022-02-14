@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { PlusCircleFill } from "react-bootstrap-icons";
+import { PlusCircleFill, FileMinusFill } from "react-bootstrap-icons";
 import { InputField } from "../../components";
 import styles from "./form.module.scss";
 import { useRef } from "react";
+
 // import { useNavigate } from "react-router-dom";
 
 const NewContactForm = ({ fields, setFields }) => {
@@ -22,7 +23,13 @@ const NewContactForm = ({ fields, setFields }) => {
 
   const openModal = () =>{
     setFields({...fields, phoneNumbers: [...fields.phoneNumbers,'']})
+    
   }
+
+  const openMailModal = () =>{
+    setFields({...fields,emails: [...fields.emails,'']})
+  }
+
 
   const photoUpload = (event) => {
     console.log(event.target.files[0])
@@ -39,7 +46,10 @@ const NewContactForm = ({ fields, setFields }) => {
         else return value
       })
     })
+    console.log("number")
   }
+
+ 
 
   const removeData =(index, field) =>{
      setFields({
@@ -110,7 +120,7 @@ const NewContactForm = ({ fields, setFields }) => {
        {
         fields.phoneNumbers.map((phoneNumber,index)=>
           
-           (<div>
+           (<li key ={index} className={styles.form__addPhone__list}>
            
           <InputField
             type="tel"
@@ -121,9 +131,9 @@ const NewContactForm = ({ fields, setFields }) => {
             }
           />
           <button onClick ={()=>removeData(index, "phoneNumbers")}      >
-           Remove data
+           <FileMinusFill size= "24" fill ="#fff"/>
           </button>
-        </div>)
+        </li>)
         )
       }
         <div onClick ={openModal} role="button">
@@ -133,7 +143,27 @@ const NewContactForm = ({ fields, setFields }) => {
       </div>
 
       <div className={styles.form__addEmail}>
-        <div role="button">
+        {
+          fields.emails.map((email,index)=>
+          
+          (<li key ={index} className={styles.form__addEmail__list}>
+          
+         <InputField
+           type="email"
+           value={email || ''}
+           placeholder="Email"
+           onChange={(e) =>
+             changePhoneNumber( e.target.value,index, "emails")
+           }
+         />
+         <button onClick ={()=>removeData(index, "emails")}>
+          <FileMinusFill size= "24" fill ="#fff"/>
+         </button>
+       </li>)
+          )
+        }
+
+        <div onClick={openMailModal} role="button">
           <PlusCircleFill size="20" color="#5bc236" />
           <p>Add Email</p>
         </div>

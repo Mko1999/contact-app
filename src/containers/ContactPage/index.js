@@ -19,12 +19,15 @@ const ContactPage = () => {
     <div className={styles.contactPage}>
       <div className={styles.contactPage__content}>
         <div className={styles.contactPage__content__container}>
-          <img src={blueIphone} alt="iphone"></img>
+          <img className = {styles.contactPage__content__container__iphone} src={blueIphone} alt="iphone"></img>
           <div className={styles.contactPage__mainContent}>
             <Navbar />
             <ContactPageHeader />
             <div className={styles.contactPage__contactPhoto}>
-              <p>{contact.firstName.charAt(0)}</p>
+              {
+                contact.uploadedPhoto ? <img src= {contact.uploadedPhoto} alt = "avatar" className={styles.contactPage__contactPhoto__img}/> : <p>{contact.firstName.charAt(0)}</p>
+              }
+              
             </div>
             <h2 className={styles.contactPage__contactName}>
               {contact.firstName} {contact.lastName}

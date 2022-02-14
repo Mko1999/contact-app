@@ -2,8 +2,12 @@ import React from "react";
 import styles from "./content.module.scss";
 import blueiphone from "../../assets/blueiphone.png";
 import { AddContact, SearchBar, Navbar, ContactList } from "..";
+import {useSelector} from "react-redux"
+import { contactSelector } from "../../store/contacts/selectors";
 
 const Content = () => {
+  const contacts = useSelector(contactSelector);
+
   return (
     <div className={styles.content}>
       <div className={styles.content__container}>
@@ -12,7 +16,7 @@ const Content = () => {
           <Navbar />
           <AddContact />
           <SearchBar />
-          <ContactList />
+          <ContactList contacts={contacts} />
         </div>
       </div>
     </div>

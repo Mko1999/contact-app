@@ -27,13 +27,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+  
   }
 
   &__deleteBtn {
     color: #ff0800;
     border-right: 1px solid #000;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
   }
 
   &__cancelBtn {
+    border: none;
+    cursor: pointer;
+    background: transparent;
+    font-size: 16px;
   }
 }

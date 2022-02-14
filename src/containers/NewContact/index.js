@@ -2,10 +2,7 @@ import React, { useState } from "react";
 import styles from "./newcontact.module.scss";
 import blueiphone from "../../assets/blueiphone.png";
 import { NewContactHeader, Navbar, NewContactForm } from "..";
-import { useSelector } from "react-redux";
-import { contactSelector } from "../../store/contacts/selectors";
 const NewContact = () => {
-  const contacts = useSelector(contactSelector);
 
   const [fields, setFields] = useState({
     firstName: "",

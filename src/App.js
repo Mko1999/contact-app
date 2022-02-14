@@ -3,7 +3,7 @@ import styles from "./styles/app.module.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 
-import { NewContact, Content, EditProfile } from "./containers";
+import { NewContact, Content, EditProfile,DeleteConfirm } from "./containers";
 import ContactPage from "./containers/ContactPage";
 
 import { store, persistor } from "./store";
@@ -18,6 +18,7 @@ const App = () => {
               <Route path="/add" element={<NewContact />} />
               <Route path="/contact/:id" element={<ContactPage />} />
               <Route path="contact/:id/edit" element={<EditProfile />} />
+              <Route path = "delete" element = {<DeleteConfirm/>}/>
             </Routes>
           </PersistGate>
         </Provider>

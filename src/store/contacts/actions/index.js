@@ -14,6 +14,7 @@ export const addContact = (contact) => {
 };
 
 export const editContact = (id, newContact) => {
+  console.log("barev",id,newContact)
   return {
     type: EDIT_CONTACT,
     payload: newContact,

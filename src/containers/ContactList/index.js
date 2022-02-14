@@ -1,12 +1,10 @@
 import React from "react";
 import styles from "./contactlist.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { contactSelector } from "../../store/contacts/selectors";
+import { useDispatch } from "react-redux";
 import { ContactListGroup } from "../../components";
 import { sortContacts, groupContacts } from "../../utils/contactHelper";
 
-const ContactList = () => {
-  const contacts = useSelector(contactSelector);
+const ContactList = ({contacts}) => {
   const groupedContacts = contacts.sort(sortContacts).reduce(groupContacts, {});
   const dispatch = useDispatch();
 

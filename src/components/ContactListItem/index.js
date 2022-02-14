@@ -22,7 +22,7 @@ const ContactListItem = ({ contact }) => {
         className={styles.contactListItem__contact}
       >
         <Link to={`/contact/${contact.id}`}>
-          {contact.firstName.charAt(0)} {contact.lastName}
+          {contact.firstName} {contact.lastName}
         </Link>
       </div>
     </div>
