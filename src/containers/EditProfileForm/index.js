@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-import { PlusCircleFill } from "react-bootstrap-icons";
+import { PlusCircleFill, StopCircleFill } from "react-bootstrap-icons";
 import { InputField } from "../../components";
 import styles from "./EditProfileForm.module.scss";
 import { useRef } from "react";
-import {FileMinusFill} from "react-bootstrap-icons";
-import { contactReducer } from "../../store/contacts/reducers";
-import {DeleteConfirm} from ".."
-// import { useNavigate } from "react-router-dom";
+import { DeleteConfirm } from "..";
 
-const EditContactForm = ({ fields, setFields }) => {
+const EditProfileForm = ({ fields, setFields, openDeleteModal }) => {
   const changeHandler = (text, name) => {
     setFields({ ...fields, [name]: text });
   };
@@ -23,43 +20,37 @@ const EditContactForm = ({ fields, setFields }) => {
     console.log("barev");
   };
 
-  const openModal = () =>{
-    setFields({...fields, phoneNumbers: [...fields.phoneNumbers,'']})
-    
-  }
+  const openModal = () => {
+    setFields({ ...fields, phoneNumbers: [...fields.phoneNumbers, ""] });
+  };
 
-  const openDeleteModal = () =>{
-    
-  }
-
-  const openMailModal = () =>{
-    setFields({...fields,emails: [...fields.emails,'']})
-  }
+  const openMailModal = () => {
+    setFields({ ...fields, emails: [...fields.emails, ""] });
+  };
 
   const photoUpload = (event) => {
     const uploadedPhoto = URL.createObjectURL(event.target.files[0]);
     setPhoto(uploadedPhoto);
     changeHandler(uploadedPhoto, "uploadedPhoto");
-
   };
 
-  const changePhoneNumber =(value,index, field) =>{
+  const changePhoneNumber = (value, index, field) => {
     setFields({
       ...fields,
       [field]: fields[field].map((num, i) => {
-        if (i !== index) return num
-        else return value
-      })
-    })
-    console.log("number")
-  }
+        if (i !== index) return num;
+        else return value;
+      }),
+    });
+    console.log("number");
+  };
 
-  const removeData =(index, field) =>{
+  const removeData = (index, field) => {
     setFields({
-     ...fields,
-     [field]: fields[field].filter((num, i) => i !== index)
-   })
- }
+      ...fields,
+      [field]: fields[field].filter((num, i) => i !== index),
+    });
+  };
 
   return (
     <form
@@ -73,7 +64,17 @@ const EditContactForm = ({ fields, setFields }) => {
           role="button"
           className={styles.editProfileForm__photo__section__background}
         >
-         {fields.uploadedPhoto ? <img src={fields.uploadedPhoto} className = {styles.editProfileForm__photo__section__background__img} alt ="avatar"/> : ""}
+          {fields.uploadedPhoto ? (
+            <img
+              src={fields.uploadedPhoto}
+              className={
+                styles.editProfileForm__photo__section__background__img
+              }
+              alt="avatar"
+            />
+          ) : (
+            ""
+          )}
         </div>
         <input
           ref={inputRef}
@@ -85,7 +86,7 @@ const EditContactForm = ({ fields, setFields }) => {
 
         <div className={styles.editProfileForm__photo__section__addPhoto}>
           <p role="button" onClick={addPhoto} className={styles.add_photo}>
-           {fields.uploadedPhoto ? "Edit Photo" : "Add Photo"}
+            {fields.uploadedPhoto ? "Edit Photo" : "Add Photo"}
           </p>
         </div>
       </div>
@@ -118,28 +119,27 @@ const EditContactForm = ({ fields, setFields }) => {
       </ul>
 
       <div className={styles.editProfileForm__addPhone}>
-        
-           {
-             fields.phoneNumbers ?
-            fields.phoneNumbers.map((phoneNumber,index)=>
-              
-               (<li key ={index} className={styles.editProfileForm__addPhone__list}>
-               
-              <InputField
-                type="tel"
-                value={phoneNumber || ''}
-                placeholder="Phone Number"
-                onChange={(e) =>
-                  changePhoneNumber( e.target.value,index, "phoneNumbers")
-                }
-              />
-              <button onClick ={()=>removeData(index, "phoneNumbers")}      >
-               <FileMinusFill size= "24" fill ="#fff"/>
-              </button>
-            </li>)
-            )
-            : null }
-        
+        {fields.phoneNumbers
+          ? fields.phoneNumbers.map((phoneNumber, index) => (
+              <li
+                key={index}
+                className={styles.editProfileForm__addPhone__list}
+              >
+                <InputField
+                  type="tel"
+                  value={phoneNumber || ""}
+                  placeholder="Phone Number"
+                  onChange={(e) =>
+                    changePhoneNumber(e.target.value, index, "phoneNumbers")
+                  }
+                />
+                <button onClick={() => removeData(index, "phoneNumbers")}>
+                  <StopCircleFill size="20" fill="#fff" />
+                </button>
+              </li>
+            ))
+          : null}
+
         <div role="button" onClick={openModal}>
           <PlusCircleFill size="20" color="#5bc236" />
           <p>Add Phone Number</p>
@@ -147,28 +147,27 @@ const EditContactForm = ({ fields, setFields }) => {
       </div>
 
       <div className={styles.editProfileForm__addEmail}>
-        {
-           
-            fields.emails ?
-           fields.emails.map((email,index)=>
-             
-              (<li key ={index} className={styles.editProfileForm__addPhone__list}>
-              
-             <InputField
-               type="tel"
-               value={fields.email || ''}
-               placeholder="Email"
-               onChange={(e) =>
-                 changePhoneNumber( e.target.value,index, "phoneNumbers")
-               }
-             />
-             <button onClick ={()=>removeData(index, "phoneNumbers")}      >
-              <FileMinusFill size= "24" fill ="#fff"/>
-             </button>
-           </li>)
-           )
-           : null }
-        
+        {fields.emails
+          ? fields.emails.map((email, index) => (
+              <li
+                key={index}
+                className={styles.editProfileForm__addPhone__list}
+              >
+                <InputField
+                  type="tel"
+                  value={email || ""}
+                  placeholder="Email"
+                  onChange={(e) =>
+                    changePhoneNumber(e.target.value, index, "emails")
+                  }
+                />
+                <button onClick={() => removeData(index, "emails")}>
+                  <StopCircleFill size="20" fill="#fff" />
+                </button>
+              </li>
+            ))
+          : null}
+
         <div onClick={openMailModal} role="button">
           <PlusCircleFill size="20" color="#5bc236" />
           <p>Add Email</p>
@@ -176,10 +175,10 @@ const EditContactForm = ({ fields, setFields }) => {
       </div>
 
       <div className={styles.editProfileForm__deleteContact}>
-        <button oncClick ={openDeleteModal}>Delete Contact</button>
+        <button onClick={openDeleteModal}>Delete Contact</button>
       </div>
     </form>
   );
 };
 
-export default EditContactForm;
+export default EditProfileForm;

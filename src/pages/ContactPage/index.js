@@ -1,63 +1,82 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./contactpage.module.scss";
 import blueIphone from "../../assets/blueiphone.png";
-import { Navbar } from "..";
-import ContactPageHeader from "../ContactPageHeader";
+import Navbar from "../../components/Navbar";
+import ContactPageHeader from "../../containers/ContactPageHeader";
 import { currentContactSelector } from "../../store/contacts/selectors";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Telegram, Mailbox } from "react-bootstrap-icons";
-import {useParams} from "react-router-dom"
-import {setCurrentContact} from "../../store/contacts/actions"
+import { useParams } from "react-router-dom";
+import { setCurrentContact } from "../../store/contacts/actions";
 
 const ContactPage = () => {
-  const dispatch = useDispatch()
-  const {id} = useParams();
-  dispatch(setCurrentContact(+id))
+  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  useEffect(() => {
+    dispatch(setCurrentContact(+id));
+  }, [id, dispatch]);
+
   const contact = useSelector(currentContactSelector);
 
   return (
     <div className={styles.contactPage}>
       <div className={styles.contactPage__content}>
         <div className={styles.contactPage__content__container}>
-          <img className = {styles.contactPage__content__container__iphone} src={blueIphone} alt="iphone"></img>
+          <img
+            className={styles.contactPage__content__container__iphone}
+            src={blueIphone}
+            alt="iphone"
+          ></img>
           <div className={styles.contactPage__mainContent}>
             <Navbar />
             <ContactPageHeader />
             <div className={styles.contactPage__contactPhoto}>
-              {
-                contact.uploadedPhoto ? <img src= {contact.uploadedPhoto} alt = "avatar" className={styles.contactPage__contactPhoto__img}/> : <p>{contact.firstName.charAt(0)}</p>
-              }
-              
+              {contact.uploadedPhoto ? (
+                <img
+                  src={contact.uploadedPhoto}
+                  alt="avatar"
+                  className={styles.contactPage__contactPhoto__img}
+                />
+              ) : (
+                <p>{contact.firstName.charAt(0)}</p>
+              )}
             </div>
             <h2 className={styles.contactPage__contactName}>
               {contact.firstName} {contact.lastName}
             </h2>
 
             <div className={styles.contactPage__actions}>
-              <ul>
-                <li
-                  className={
-                    !contact.phoneNumbers[0] ? styles.hidden : styles.block
-                  }
-                >
-                  <a href={`tel: ${contact.phoneNumbers[0]}`}>
-                    <div className={styles.contactPage__actions__btn}>
-                      <Telegram size="48" fill="#007aff" />
-                      <p>Call</p>
-                    </div>
-                  </a>
-                </li>
-                <li
-                  className={!contact.emails[0] ? styles.hidden : styles.block}
-                >
-                  <a href={`mailto: ${contact.emails[0]}`}>
-                    <div className={styles.contactPage__actions__btn}>
-                      <Mailbox size="48" fill="#007aff" />
-                      <p>Email</p>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+              {contact.phoneNumbers[0] ? (
+                <ul>
+                  <li
+                    className={
+                      !contact.phoneNumbers[0] ? styles.hidden : styles.block
+                    }
+                  >
+                    <a href={`tel: ${contact.phoneNumbers[0]}`}>
+                      <div className={styles.contactPage__actions__btn}>
+                        <Telegram size="48" fill="#007aff" />
+                        <p>Call</p>
+                      </div>
+                    </a>
+                  </li>
+                  <li
+                    className={
+                      !contact.emails[0] ? styles.hidden : styles.block
+                    }
+                  >
+                    <a href={`mailto: ${contact.emails[0]}`}>
+                      <div className={styles.contactPage__actions__btn}>
+                        <Mailbox size="48" fill="#007aff" />
+                        <p>Email</p>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              ) : (
+                <p className={styles.contactPage__actions__nodata}>No Data</p>
+              )}
             </div>
 
             <div className={styles.contactPage__detailedInfo}>

@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./content.module.scss";
 import blueiphone from "../../assets/blueiphone.png";
-import { AddContact, SearchBar, Navbar, ContactList } from "..";
-import {useSelector} from "react-redux"
+import { AddContact, SearchBar, ContactList } from "../../containers";
+import Navbar from "../../components/Navbar";
+import { useSelector } from "react-redux";
 import { contactSelector } from "../../store/contacts/selectors";
 
 const Content = () => {

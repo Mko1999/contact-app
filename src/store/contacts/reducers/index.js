@@ -1,7 +1,7 @@
 export const ADD_CONTACT = "ADD_CONTACT";
 export const EDIT_CONTACT = "EDIT_CONTACT";
 export const DELETE_CONTACT = "DELETE_CONTACT";
-export const SET_CONTACT = "SET_CONTACT"
+export const SET_CONTACT = "SET_CONTACT";
 
 const initialState = {
   contacts: [
@@ -52,17 +52,20 @@ export const contactReducer = (state = initialState, { type, payload, id }) => {
       };
 
     case DELETE_CONTACT:
+      console.log(payload, "DELETE CONTACT PAYLOAD");
       return {
         ...state,
+        contacts: state.contacts.filter((contact) => contact.id !== payload),
+        currentContact: {},
       };
 
-   
-
-  case SET_CONTACT: 
-  return {
-    ...state,
-    currentContact: state.contacts.find((contact)=> contact.id === payload)
-  }
+    case SET_CONTACT:
+      return {
+        ...state,
+        currentContact: state.contacts.find(
+          (contact) => contact.id === payload
+        ),
+      };
     default:
       return state;
   }

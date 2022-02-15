@@ -27,7 +27,7 @@
       background-position: 50%;
       background-image: url("../../assets/avatar.png");
 
-      &__img{
+      &__img {
         width: 150px;
         height: 150px;
         border-radius: 50%;
@@ -75,32 +75,32 @@
       }
     }
 
-    li{
+    li {
       height: 42px;
-    border: none;
-    border-bottom: 1px solid #8e8e93;
-    margin: 0 auto;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    width: 80%;
-
-    button{
-      background-color: #ff0800;
-      cursor: pointer;
-      border-radius: 50%;
-    }
-
-    input{
       border: none;
-      outline: none;
-      background: transparent;
+      border-bottom: 1px solid #8e8e93;
+      margin: 0 auto;
+      list-style: none;
+      display: flex;
+      align-items: center;
       width: 80%;
-      &:focus{
+
+      button {
+        background-color: #ff0800;
+        cursor: pointer;
+        border-radius: 50%;
+      }
+
+      input {
         border: none;
         outline: none;
+        background: transparent;
+        width: 80%;
+        &:focus {
+          border: none;
+          outline: none;
+        }
       }
-    }
     }
   }
   &__fileInput {
@@ -117,11 +117,20 @@
       margin: 16px auto 20px;
       cursor: pointer;
       background: transparent;
+      border: none;
+      font-size: 18px;
+      transition: 0.5s ease-in-out;
+      &:hover {
+        color: #fff;
+        background: #ff0800;
+        border-radius: 8px;
+        box-shadow: 0 0 0 4px;
+      }
     }
   }
-  &__img{
+  &__img {
     width: 150px;
-    height:150px;
+    height: 150px;
     border-radius: 50%;
   }
 }

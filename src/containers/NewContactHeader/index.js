@@ -13,11 +13,7 @@ const NewContactHeader = ({ fields }) => {
   const contactList = useSelector(contactSelector);
 
   useEffect(() => {
-    if (fields.firstName || fields.lastName) {
-      setDisabled(false);
-    } else{
-      setDisabled(true);
-    }
+    setDisabled(!fields.firstName && !fields.lastName);
   }, [fields.company, fields.firstName, fields.lastName, disabled]);
 
   const sortContacts = contactList.sort((a, b) => a.id - b.id);
@@ -46,8 +42,8 @@ const NewContactHeader = ({ fields }) => {
       <Button
         value="Done"
         background="#fff"
-        color={disabled? "#8e8e93" : "blue"}
-        disabled={!disabled}
+        color={disabled ? "#8e8e93" : "#007aff"}
+        disabled={disabled}
         className={styles.newContactHeader__done}
         onButtonClick={handleDoneClick}
       />

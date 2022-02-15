@@ -1,16 +1,8 @@
 export { default as NewContactForm } from "./NewContactForm";
-export { default as Time } from "./Time";
-export { default as Navbar } from "./Navbar";
-export { default as Content } from "./Content";
-export { default as AddEmail } from "./AddEmail";
-export { default as AddPhone } from "./AddPhone";
-export { default as AddPhoto } from "./AddPhoto";
 export { default as SearchBar } from "./SearchBar";
-export { default as ContactPage } from "./ContactPage";
-export { default as NewContact } from "./NewContact";
 export { default as AddContact } from "./AddContact";
 export { default as ContactList } from "./ContactList";
-export { default as EditProfile } from "./EditProfile";
+
 export { default as DeleteConfirm } from "./DeleteConfirm";
 export { default as EditProfileHeader } from "./EditProfileHeader";
 export { default as EditProfileForm } from "./EditProfileForm";

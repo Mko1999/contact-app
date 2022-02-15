@@ -1,28 +1,35 @@
-.newContact {
+.editProfile {
   width: 100%;
   justify-content: center;
   align-items: center;
   display: flex;
-  height: 90vh;
+
   &__container {
     position: relative;
     box-sizing: border-box;
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-width: none;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
-
+   
   }
 
   &__pic {
-    height: 650px;
+    height: 600px;
     object-fit: cover;
   }
   &__heading {
     position: absolute;
     top: 30px;
     width: 100%;
+    height: 90%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  
   }
 }
