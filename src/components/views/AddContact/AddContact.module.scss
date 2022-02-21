@@ -1,0 +1,24 @@
+.add_contact {
+  width: 100%;
+  margin-top: -10px;
+
+  &__container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__btn {
+    background: transparent;
+    border-radius: 50%;
+    border: navajowhite;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

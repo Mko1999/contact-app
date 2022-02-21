@@ -17,7 +17,10 @@ export const groupContacts = (object, contact) => {
   return object;
 };
 
-export const filterContacts = (filter,contacts) =>{
-  return contacts.filter((contact)=> contact.firstName?.toLowerCase().includes(filter.toLowerCase()) 
-  || contact.lastName?.toLowerCase().includes(filter.toLowerCase()))
-} 
+export const filterContacts = (filter, contacts) => {
+  return contacts.filter(
+    (contact) =>
+      contact?.firstName?.toLowerCase().includes(filter.toLowerCase()) ||
+      contact?.lastName?.toLowerCase().includes(filter.toLowerCase())
+  );
+};
